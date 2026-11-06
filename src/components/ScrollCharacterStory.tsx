@@ -193,7 +193,7 @@ export function ScrollCharacterStory() {
   const garlandX = useTransform(
     scrollYProgress,
     [0.505, 0.75],
-    isMobile ? ['-22vw', '-22vw'] : ['-16vw', '-16vw'],
+    isMobile ? ['-22vw', '-22vw'] : ['-20vw', '-20vw'],
   )
   const garlandY = useTransform(scrollYProgress, [0.505, 0.75], ['8vh', '8vh'])
   const garlandScale = useTransform(scrollYProgress, [0.505, 0.75], [0.82, 0.86])

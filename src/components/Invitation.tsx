@@ -211,41 +211,21 @@ export function Invitation() {
             </p>
           </ScrollReveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-8 px-6 md:grid-cols-3 md:gap-10">
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 px-6 md:grid-cols-2 md:gap-20">
             {site.featuredSections.map((s, i) => (
               <ScrollReveal
                 key={s.id}
-                direction={i % 3 === 1 ? 'scale' : i % 3 === 0 ? 'up' : 'left'}
+                direction={i % 2 === 0 ? 'up' : 'left'}
                 delay={0.07 * i}
+                className="flex justify-center md:block"
               >
-                <motion.article
-                  className="group relative overflow-hidden rounded-2xl border border-gold-300/30 bg-white/95 shadow-md"
-                  whileHover={{
-                    y: -6,
-                    boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
-                  }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <KolamCardCorners />
-                  <div className="relative z-[1] aspect-video overflow-hidden">
-                    <motion.img
-                      src={s.image}
-                      alt=""
-                      className={`h-full w-full object-cover ${s.imagePositionClass}`}
-                      loading="lazy"
-                      whileHover={{ scale: 1.06 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </div>
-                  <div className="relative z-[1] p-6">
-                    <h3 className="font-display text-2xl text-stone-900">
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-stone-600">
-                      {s.description}
-                    </p>
-                  </div>
-                </motion.article>
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  className="mx-auto block h-auto w-auto max-h-[90vh] max-w-[70vw] rounded-2xl shadow-md object-contain sm:max-w-[300px] md:h-auto md:w-full md:max-h-none md:max-w-full"
+                  loading="lazy"
+                  decoding="async"
+                />
               </ScrollReveal>
             ))}
           </div>

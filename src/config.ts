@@ -84,24 +84,16 @@ export const site = {
       title: 'Engagement',
       description:
         'An evening of warmth, music, and togetherness as we begin the celebrations with everyone we love.',
-      image: publicAsset('reception.png'),
+      image: publicAsset('engagement.png'),
       imagePositionClass: 'object-center',
     },
     {
       id: 2,
-      title: 'Traditions',
+      title: 'Shubh Vivah',
       description:
-        'Sacred rituals and blessings woven into every moment of our Marathi wedding.',
-      image: publicAsset('traditions.png'),
+        'Sacred rituals and blessings woven into every moment of our wedding.',
+      image: publicAsset('shaadi.png'),
       imagePositionClass: 'object-center',
-    },
-    {
-      id: 3,
-      title: 'New beginnings',
-      description:
-        'Two families, one journey — we can’t wait to share this joy with you.',
-      image: publicAsset('beginnings.png'),
-      imagePositionClass: 'object-top',
     },
   ],
   eventSchedule: [
