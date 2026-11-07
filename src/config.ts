@@ -5,8 +5,8 @@ const publicAsset = (path: string) =>
 
 export const site = {
   couple: {
-    bride: 'Srushti',
-    groom: 'Pritam',
+    bride: 'Pritam',
+    groom: 'Srushti',
     monogramLogo: publicAsset('nd-logo-envelope.png'),
   },
   wedding: {
@@ -112,7 +112,7 @@ export const site = {
       title: 'Shubh Vivah',
       description: 'Auspicious wedding ceremony',
       /** Om — sacred symbol for the wedding ceremony (replaces generic chapel) */
-      image: publicAsset('muhurtham.png'),
+      image: publicAsset('muhurtham.jpg'),
       calendarEventId: 'muhurtham',
     },
   ],

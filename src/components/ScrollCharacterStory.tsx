@@ -106,7 +106,7 @@ function Character({
       src={src}
       alt=""
       aria-hidden
-      className={`absolute bottom-0 left-1/2 w-auto max-w-[92vw] -translate-x-1/2 select-none object-contain drop-shadow-2xl ${className}`.trim()}
+      className={`absolute bottom-0 left-1/2 w-auto max-w-[55vw] sm:max-w-[60vw] md:max-w-[92vw] -translate-x-1/2 select-none object-contain drop-shadow-2xl ${className}`.trim()}
       draggable={false}
       loading="lazy"
       decoding="async"
@@ -120,6 +120,7 @@ export function ScrollCharacterStory() {
   const s = site.scrollStory
   const [celebrating, setCelebrating] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isTab, setIsTab] = useState(false);
   const hasCelebratedRef = useRef(false)
   const celebrationTimerRef = useRef<number | null>(null)
 
@@ -130,8 +131,15 @@ export function ScrollCharacterStory() {
     handleMediaChange()
     mediaQuery.addEventListener('change', handleMediaChange)
 
+    const tabMediaQuery = window.matchMedia('(max-width: 1000px)')
+    const handleTabMediaChange = () => setIsTab(tabMediaQuery.matches)
+
+    handleTabMediaChange()
+    tabMediaQuery.addEventListener('change', handleTabMediaChange)
+
     return () => {
       mediaQuery.removeEventListener('change', handleMediaChange)
+      mediaQuery.removeEventListener('change', handleTabMediaChange)
 
       if (celebrationTimerRef.current) {
         window.clearTimeout(celebrationTimerRef.current)
@@ -174,12 +182,12 @@ export function ScrollCharacterStory() {
   const brideApproachX = useTransform(
     scrollYProgress,
     [0.04, 0.3, 0.5],
-    isMobile ? ['-58vw', '-40vw', '-28vw'] : ['-52vw', '-32vw', '-22vw'],
+    isMobile ? ['-68vw', '-56vw', '-40vw'] : isTab ? ['-82vw', '-72vw', '-52vw'] : ['-52vw', '-32vw', '-22vw'],
   )
   const groomApproachX = useTransform(
     scrollYProgress,
     [0.04, 0.3, 0.5],
-    isMobile ? ['26vw', '6vw', '-8vw'] : ['16vw', '10vw', '-5vw'],
+    isMobile ? ['10vw', '6vw', '-12vw'] : isTab ? ['10vw', '0vw', '-20vw'] : ['16vw', '10vw', '-5vw'],
   )
   const approachY = useTransform(scrollYProgress, [0.04, 0.5], ['4vh', '4vh'])
   const approachScale = useTransform(scrollYProgress, [0.04, 0.5], [0.72, 0.8])
@@ -193,7 +201,7 @@ export function ScrollCharacterStory() {
   const garlandX = useTransform(
     scrollYProgress,
     [0.505, 0.75],
-    isMobile ? ['-22vw', '-22vw'] : ['-20vw', '-20vw'],
+    isMobile ? ['-26vw', '-26vw'] : isTab ? ['-38vw', '-38vw'] : ['-12vw', '-12vw'],
   )
   const garlandY = useTransform(scrollYProgress, [0.505, 0.75], ['8vh', '8vh'])
   const garlandScale = useTransform(scrollYProgress, [0.505, 0.75], [0.82, 0.86])
@@ -206,7 +214,7 @@ export function ScrollCharacterStory() {
   const finalX = useTransform(
     scrollYProgress,
     [0.755, 1],
-    isMobile ? ['-16vw', '-16vw'] : ['-12vw', '-12vw'],
+    isMobile ? ['-22vw', '-22vw'] : isTab ? ['-30vw', '-30vw'] : ['-12vw', '-12vw'],
   )
   const finalY = useTransform(scrollYProgress, [0.755, 1], ['8vh', '8vh'])
   const finalScale = useTransform(scrollYProgress, [0.755, 1], [0.84, 0.9])
